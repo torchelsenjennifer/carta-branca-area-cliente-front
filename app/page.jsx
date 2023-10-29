@@ -18,9 +18,10 @@ export default function Home() {
     <ItemProfissional key={profissional.id} profissional={profissional} />
   ));
   return (
-    <div>
-      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4"></div>
-      {listaProfissionais}
+    <div className="container">
+      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4 mt-3">
+      	{listaProfissionais}
+	  </div>
     </div>
   );
 }
