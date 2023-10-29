@@ -19,7 +19,7 @@ export default function Home() {
   ));
   return (
     <div>
-      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4"></div>
+      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4"></div>
       {listaProfissionais}
     </div>
   );

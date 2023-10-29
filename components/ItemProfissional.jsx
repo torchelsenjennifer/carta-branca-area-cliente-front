@@ -1,6 +1,6 @@
 export default function ItemProfissional(props){
 	return(
-		<div class="col">
+		<div className="col">
 			<div className="card">
 				<img src={props.profissional.imagem} className="card-img-top" alt="profissional"/>
 				<div className="card-body">

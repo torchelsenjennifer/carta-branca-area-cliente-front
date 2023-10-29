@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Titulo() {
   return (
-    <nav class="navbar bg-dark">
+    <nav className="navbar bg-dark">
       <div className="row container-fluid">
         <div className="col">
           <Link className="navbar-brand text-white" href="/">
@@ -25,7 +25,7 @@ export default function Titulo() {
 		<div className="col">
 			<Link href="/login" className="text-white">
 				<h4 className="float-end">Identifique-se</h4>
-				<i class="bi bi-person-fill-up text-white ms-2 float-end fs-4"></i>
+				<i className="bi bi-person-fill-up text-white ms-2 float-end fs-4"></i>
 			</Link>
 		</div>
       </div>
