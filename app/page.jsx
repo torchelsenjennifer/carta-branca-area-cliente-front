@@ -1,5 +1,5 @@
 "use client";
-import ItemProfissional from "@/components/ItemProfissonal";
+import ItemProfissional from "@/components/ItemProfissional";
 import { useEffect, useState } from "react";
 
 export default function Home() {
