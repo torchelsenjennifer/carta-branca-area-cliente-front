@@ -42,9 +42,12 @@ export default function Titulo() {
               <h4 className="float-end">Identifique-se</h4>
             </Link>
             :
-            <div className="text-white" onClick={logout}>
+            <div className="text-white float-end">
               <i className="bi bi-person-fill-down text-white ms-2 me-2 float-end fs-4"></i>
-              <h4 className="float-end">{clienteNome}</h4>
+              <h4 className="float-start">{clienteNome} <span onClick={logout} style={{ cursor: 'pointer' }}>
+                (sair)
+              </span></h4>
+
             </div>
           }
         </div>
