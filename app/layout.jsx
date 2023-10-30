@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Titulo from '@/components/Titulo';
+import ClienteProvider from '@/contexts/cliente';
 
 export const metadata = {
   title: 'Carta Branca',
@@ -8,11 +9,16 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+
+
   return (
     <html lang="pt-br">
       <body>
-		<Titulo/>
+        <ClienteProvider>
+          <Titulo />
           {children}
+        </ClienteProvider>
       </body>
     </html>
   )
