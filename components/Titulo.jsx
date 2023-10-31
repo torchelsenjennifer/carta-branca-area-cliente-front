@@ -1,16 +1,15 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { useContext } from "react";
 import { ClienteContext } from "@/contexts/cliente";
 
 export default function Titulo() {
-
-  const { clienteNome, mudaId, mudaNome } = useContext(ClienteContext)
+  const { clienteNome, mudaId, mudaNome } = useContext(ClienteContext);
 
   function logout() {
     if (confirm("Confirma saída do sistema?")) {
-      mudaId(null)
-      mudaNome("")
+      mudaId(null);
+      mudaNome("");
     }
   }
 
@@ -31,25 +30,35 @@ export default function Titulo() {
         </div>
         <div className="col text-white">
           <div className="input-group mb-3 mt-3">
-            <input type="text" className="form-control" placeholder="Profissional" aria-label="Recipient's username" aria-describedby="button-addon2" />
-            <button className="btn bg-danger" type="button" id="button-addon2">Pesquisar</button>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Profissional"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <button className="btn bg-danger" type="button" id="button-addon2">
+              Pesquisar
+            </button>
           </div>
         </div>
         <div className="col">
-          {clienteNome == "" ?
+          {clienteNome == "" ? (
             <Link href="/login" className="text-white">
               <i className="bi bi-person-fill-up text-white ms-2 me-2 float-end fs-4"></i>
               <h4 className="float-end">Identifique-se</h4>
             </Link>
-            :
+          ) : (
             <div className="text-white float-end">
               <i className="bi bi-person-fill-down text-white ms-2 me-2 float-end fs-4"></i>
-              <h4 className="float-start">{clienteNome} <span onClick={logout} style={{ cursor: 'pointer' }}>
-                (sair)
-              </span></h4>
-
+              <h4 className="float-start">
+                {clienteNome}{" "}
+                <span onClick={logout} style={{ cursor: "pointer" }}>
+                  (sair)
+                </span>
+              </h4>
             </div>
-          }
+          )}
         </div>
       </div>
     </nav>
