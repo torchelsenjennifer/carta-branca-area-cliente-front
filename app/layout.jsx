@@ -16,8 +16,8 @@ export default function RootLayout({ children }) {
         <ClienteProvider>
           <Titulo />
           {children}
-		  <Footer/>
         </ClienteProvider>
+		<Footer/>
       </body>
     </html>
   );
