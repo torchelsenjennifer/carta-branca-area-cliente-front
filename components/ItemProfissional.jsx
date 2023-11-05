@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { ClienteContext } from "@/contexts/cliente";
 import Estrelas from "@/components/Estrelas";
+import Link from "next/link";
 
 export default function ItemProfissional(props) {
   const { clienteId } = useContext(ClienteContext);
@@ -25,10 +26,13 @@ export default function ItemProfissional(props) {
               soma={props.profissional.soma}
               num={props.profissional.num}
             />
-			<div className="float-end me-2">
-				<i class="bi bi-chat-dots-fill text-primary me-2" title="Ver Coment�rios"></i>
-				<i class="bi bi-patch-plus-fill text-danger" title="Adicionar Coment�rios"></i>
-			</div>
+            <div className="float-end me-2">
+              <i className="bi bi-chat-dots-fill text-primary me-2" style={{ cursor: 'pointer' }} title="Ver Comentários"></i>
+
+              <Link href={"/avaliar/" + props.profissional.id}>
+                <i className="bi bi-patch-plus text-danger fs-3 me-2" style={{ cursor: 'pointer' }} title="Adicionar Comentários"></i>
+              </Link>
+            </div>
           </div>
         )}
       </div>
