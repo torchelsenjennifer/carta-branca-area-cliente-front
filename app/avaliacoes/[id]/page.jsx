@@ -1,7 +1,7 @@
 'use client'
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react"
-
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Avaliacoes() {
     const params = useParams()
@@ -56,7 +56,7 @@ export default function Avaliacoes() {
     return (
         <div className="container-fluid">
             <div className="row">
-                <img
+                <Image
                     src={profissional.imagem}
                     className="card-img-top"
                     alt="profissional"

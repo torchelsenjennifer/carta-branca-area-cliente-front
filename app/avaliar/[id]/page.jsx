@@ -60,8 +60,6 @@ export default function Avaliar() {
       alert("Ok! Avaliação cadastrada com sucesso")
       reset()
     } else {
-      console.log(avalia.status);
-      console.log(atualiza_estrelas.status);
       alert("Erro no cadastro da avaliação...")
     }
   }

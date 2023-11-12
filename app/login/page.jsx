@@ -29,7 +29,7 @@ export default function Login() {
   return (
     <main className="form-signin w-100 m-auto mt-5">
       <form onSubmit={handleSubmit(verificaLogin)}>
-        <h1 className="my-3 fw-normal">Dados do Cliente: Login</h1>
+        <h1 className="my-3 fw-normal">Fazer Login</h1>
 
         <div className="form-floating">
           <input
@@ -55,12 +55,12 @@ export default function Login() {
         </div>
 
         <div className="text-end my-3">
-          <Link className="text-black" href="/novocliente">
-            Novo? Cadastre-se
+          <Link className="text-black" href="/cadastrar">
+            Cliente novo? Comece aqui
           </Link>
         </div>
 
-        <button className="btn bg-black w-100 py-2 text-white" type="submit">
+        <button className="btn bg-black w-100 py-2 text-white mb-5" type="submit">
           Entrar
         </button>
       </form>
