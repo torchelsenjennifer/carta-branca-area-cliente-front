@@ -1,56 +1,85 @@
-'use client'
-import { useState } from 'react';
+"use client";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 const Cadastrar = () => {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const { register, handleSubmit, reset } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Lógica para lidar com os dados do formulário
-    console.log('Nome:', nome);
-    console.log('Email:', email);
-    console.log('Senha:', senha);
-  };
+  async function cadastrarCliente(data) {
+	const { nome, email, senha } = data;
+
+	if (nome.trim() === "" || email.trim() === "" || senha.trim() === "") {
+	  alert("Por Favor, Preencha Todos os Campos!");
+	} else {
+	  const clientes = await fetch("http://localhost:3004/clientes", {
+		method: "POST",
+		headers: {
+		  "Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+		  ...data,
+		  nome: String(nome),
+		  email: String(email),
+		  senha: String(senha),
+		}),
+	  });
+
+	  if (clientes.status === 201) {
+		alert("Cadastro de Cliente realizado com sucesso!");
+		reset();
+	  } else {
+		alert("Erro ao Cadastrar Cliente!");
+	  }
+	}
+  }
+
+  useEffect(() => {}, []);
 
   return (
     <div className="container">
       <div className="row justify-content-center mt-5">
         <div className="col-md-6">
           <h2>Criar Conta</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(cadastrarCliente)}>
             <div className="mb-3">
-              <label htmlFor="nome" className="form-label">Seu Nome</label>
+              <label htmlFor="nome" className="form-label">
+                Seu Nome
+              </label>
               <input
                 type="text"
                 className="form-control"
                 id="nome"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
+                {...register("nome")}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
               <input
                 type="email"
                 className="form-control"
                 id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email")}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="senha" className="form-label">Senha</label>
+              <label htmlFor="senha" className="form-label">
+                Senha
+              </label>
               <input
                 type="password"
                 className="form-control"
                 id="senha"
-                value={senha}
-                onChange={(e) => setSenha(e.target.value)}
+                {...register("senha")}
               />
             </div>
-            <button type="submit" className="btn bg-black w-100 py-2 text-white mb-5">Cadastrar</button>
+            <button
+              type="submit"
+              className="btn bg-black w-100 py-2 text-white mb-5"
+            >
+              Cadastrar
+            </button>
           </form>
         </div>
       </div>
