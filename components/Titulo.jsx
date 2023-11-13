@@ -7,7 +7,7 @@ export default function Titulo() {
   const { clienteNome, mudaId, mudaNome } = useContext(ClienteContext);
 
   function logout() {
-    if (confirm("Confirma saída do sistema?")) {
+    if (confirm("Confirma saÃ­da do sistema?")) {
       mudaId(null);
       mudaNome("");
     }
