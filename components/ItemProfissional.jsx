@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useContext } from "react";
 import { ClienteContext } from "@/contexts/cliente";
@@ -27,19 +28,11 @@ export default function ItemProfissional(props) {
               num={props.profissional.num}
             />
             <div className="float-end me-2">
-              <Link href={"/avaliacoes/" + props.profissional.id}>
-                <i
-                  className="bi bi-chat-dots-fill text-primary me-2"
-                  style={{ cursor: "pointer" }}
-                  title="Ver Comentários"
-                ></i>
-              </Link>
+            <Link href={"/avaliacoes/" + props.profissional.id}>
+              <i className="bi bi-chat-dots-fill text-primary me-2" style={{ cursor: 'pointer' }} title="Ver Comentários"></i>
+            </Link>
               <Link href={"/avaliar/" + props.profissional.id}>
-                <i
-                  className="bi bi-patch-plus text-danger fs-3 me-2"
-                  style={{ cursor: "pointer" }}
-                  title="Adicionar Comentários"
-                ></i>
+                <i className="bi bi-patch-plus text-danger fs-3 me-2" style={{ cursor: 'pointer' }} title="Adicionar Comentários"></i>
               </Link>
             </div>
           </div>

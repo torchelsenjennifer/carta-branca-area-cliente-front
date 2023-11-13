@@ -1,67 +1,65 @@
 'use client'
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react"
+import ItemAvaliacao from "@/components/ItemAvaliacao";
 
 export default function Avaliacoes() {
     const params = useParams()
-    const [profissional, setProfissional] = useState({})
-    const [cliente, setCliente] = useState({})
-    const [avaliacao, setAvaliacao] = useState({})
+    const [avaliacoes, setAvaliacoes] = useState([])
+    const [clientes, setClientes] = useState([])
+    const [profissionais, setProfissionais] = useState([])
 
     useEffect(() => {
-        async function getAvaliacao() {
-            try {
-                const avaliacaoRota = await fetch(`http://localhost:3004/avaliacoes/${params.id}`)
-                const avaliacao = await avaliacaoRota.json()
-                const profissionalRota = await fetch(`http://localhost:3004/profissionais/${avaliacao.profissional_id}`)
-                const profissional = await profissionalRota.json()
-                const clienteRota = await fetch(`http://localhost:3004/clientes/${avaliacao.cliente_id}`)
-                const cliente = await clienteRota.json()
-
-                setProfissional({
-                    id: profissional.id,
-                    nome: profissional.nome,
-                    CPF: profissional.CPF,
-                    contato: profissional.contato,
-                    dataNasc: profissional.dataNasc,
-                    especialidade: profissional.especialidade,
-                    imagem: profissional.imagem,
-                    soma: profissional.soma,
-                    num: profissional.num
-                })
-
-                setCliente({
-                    id: cliente.id,
-                    nome: cliente.nome,
-                    email: cliente.email,
-                    senha: cliente.senha
-                })
-
-                setAvaliacao({
-                    estrelas: avaliacao.estrelas,
-                    comentario: avaliacao.comentario,
-                    cliente_id: avaliacao.cliente_id,
-                    profissional_id: avaliacao.profissional_id,
-                    data: avaliacao.data,
-                    id: avaliacao.id
-                })
-            } catch (error) {
-                console.log(error);
-            }
+        async function getAvaliacoes() {
+            const response = await fetch("http://localhost:3004/avaliacoes")
+            const dados = await response.json()
+            setAvaliacoes(dados)
         }
-        getAvaliacao()
-    }, []);
+        getAvaliacoes()
+
+        async function getClientes() {
+            const response = await fetch("http://localhost:3004/clientes")
+            const dados = await response.json()
+            setClientes(dados)
+        }
+        getClientes()
+
+        async function getProfissionais() {
+            const response = await fetch("http://localhost:3004/profissionais")
+            const dados = await response.json()
+            setProfissionais(dados)
+        }
+        getProfissionais()
+
+
+    }, [])
+
+    const listaAvaliacoes = avaliacoes.map((avaliacao) => (
+        <ItemAvaliacao
+            key={avaliacao.id}
+            avaliacao={avaliacao}
+            cliente={clientes.find((cliente) => cliente.id === avaliacao.cliente_id)}
+            profissional={profissionais.find((profissional) => profissional.id === avaliacao.profissional_id)}
+
+        />
+    ));
+
+
 
     return (
         <div className="container-fluid">
+
             <div className="row">
-                <Image
+                {listaAvaliacoes}
+            </div>
+
+            {/* <div className="row">
+                <img
                     src={profissional.imagem}
                     className="card-img-top"
                     alt="profissional"
                 />
-                {/* <div className="card-body">
+                 <div className="card-body">
                     <h5 className="card-title">{cliente.titulo}</h5>
                     <p className="card-text">{props.profissional.nome}</p>
                     <p className="small">{props.profissional.especialidade}</p>
@@ -80,7 +78,7 @@ export default function Avaliacoes() {
                         </div>
                     </div>
                 )} */}
-            </div>
+            {/* </div> */}
         </div>
     )
 }
