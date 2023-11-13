@@ -15,40 +15,50 @@ export default function Titulo() {
 
   return (
     <nav className="navbar bg-dark">
-      <div className="container-fluid">
-        <Link className="navbar-brand text-white" href="/">
-          <img
-            src="./logoCartaBranca.png"
-            alt="Bootstrap"
-            width="60"
-            height="48"
-            className="d-inline-block align-text-top float-start"
-          />
-          <h3 className="float-start mt-2 ms-2">Studio Carta Branca</h3>
-        </Link>
-        <Link className="navbar-brand text-white" href="/profissionais">
-          Profissionais
-        </Link>
-        <Link className="navbar-brand text-white" href="/tatuagens">
-          Tatuagens
-        </Link>
-
-        {clienteNome == "" ? (
-          <Link href="/login" className="text-white">
-            <i className="bi bi-person-fill-up text-white ms-2 me-2 float-end fs-4"></i>
-            <h4 className="float-end">Identifique-se</h4>
+      <div className="container-fluid d-flex align-items-center">
+        <div className="d-flex gap-2 p-2 w-100 float-end">
+          <Link className="navbar-brand text-white" href="/">
+            Home
           </Link>
-        ) : (
-          <div className="text-white float-end">
-            <i className="bi bi-person-fill-down text-white ms-2 me-2 float-end fs-4"></i>
-            <h4 className="float-start">
-              {clienteNome}{" "}
-              <span onClick={logout} style={{ cursor: "pointer" }}>
-                (sair)
-              </span>
-            </h4>
-          </div>
-        )}
+          <Link className="navbar-brand text-white" href="/profissionais">
+            Tatuadores
+          </Link>
+          <Link className="navbar-brand text-white" href="/">
+            <img
+              src="./logoCartaBranca.png"
+              alt="Bootstrap"
+              width="60"
+              height="48"
+              className="d-inline-block align-text-top float-start"
+            />
+          </Link>
+          <Link className="navbar-brand text-white" href="/tatuagens">
+            Galeria
+          </Link>
+          <Link className="navbar-brand text-white" href="/">
+            Serviços
+          </Link>
+
+          {clienteNome === "" ? (
+            <Link
+              href="/login"
+              className="text-white d-flex align-items-center ms-auto"
+            >
+              <i className="bi bi-person-fill-up text-white me-2 fs-4"></i>
+              <h4>Minha Conta</h4>
+            </Link>
+          ) : (
+            <div className="text-white d-flex align-items-center">
+              <i className="bi bi-person-fill-down text-white me-2 fs-4"></i>
+              <h4>
+                {clienteNome}{" "}
+                <span onClick={logout} style={{ cursor: "pointer" }}>
+                  (sair)
+                </span>
+              </h4>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

@@ -18,8 +18,8 @@ export default function Destaque() {
     <ItemTatuagem key={tatuagem.id} tatuagem={tatuagem} />
   ));
   return (
-      <div className="container">
-		<h1 className="text-center">Galeria de Tatuagens</h1>
+      <div className="container mt-5">
+		<h1 className="text-center ">Galeria de Tatuagens</h1>
         <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4 mt-3">
           {listaTatuagens}
         </div>
