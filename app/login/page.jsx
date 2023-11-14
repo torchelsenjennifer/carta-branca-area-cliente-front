@@ -55,7 +55,7 @@ export default function Login() {
         </div>
 
         <div className="text-end my-3">
-          <Link className="text-black" href="/novocliente">
+          <Link className="text-black" href="/cadastrar">
             Novo? Cadastre-se
           </Link>
         </div>
