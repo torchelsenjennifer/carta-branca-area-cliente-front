@@ -13,6 +13,7 @@ export default function ItemTatuagem(props) {
           <h5 className="card-title">{props.tatuagem.nome}</h5>
           <p className="card-text">{props.tatuagem.localizacao}</p>
           <p className="small">{props.tatuagem.preco}</p>
+		  <p className="small">{props.tatuagem.tipo}</p>
         </div>
       </div>
     </div>
