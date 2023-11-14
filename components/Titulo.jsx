@@ -15,8 +15,8 @@ export default function Titulo() {
 
   return (
     <nav className="navbar bg-dark">
-      <div className="container-fluid d-flex align-items-center">
-        <div className="d-flex gap-2 p-2 w-100 float-end">
+      <div className="container-fluid d-flex gap-2 p-2 w-100 float-end align-items-center">
+        <div className="d-flex mx-auto align-items-center">
           <Link className="navbar-brand text-white" href="/">
             Home
           </Link>
@@ -38,27 +38,28 @@ export default function Titulo() {
           <Link className="navbar-brand text-white" href="/">
             Serviços
           </Link>
-
-          {clienteNome === "" ? (
-            <Link
-              href="/login"
-              className="text-white d-flex align-items-center ms-auto"
-            >
-              <i className="bi bi-person-fill-up text-white me-2 fs-4"></i>
-              <h4>Minha Conta</h4>
-            </Link>
-          ) : (
-            <div className="text-white d-flex align-items-center">
-              <i className="bi bi-person-fill-down text-white me-2 fs-4"></i>
-              <h4>
-                {clienteNome}{" "}
-                <span onClick={logout} style={{ cursor: "pointer" }}>
-                  (sair)
-                </span>
-              </h4>
-            </div>
-          )}
         </div>
+
+
+        {clienteNome === "" ? (
+          <Link
+            href="/login"
+            className="text-white d-flex align-items-center"
+          >
+            <i className="bi bi-person-fill-up text-white me-2 fs-4"></i>
+            <span className="fs-4">Minha Conta</span>
+          </Link>
+        ) : (
+          <div className="text-white d-flex align-items-center">
+            <i className="bi bi-person-fill-down text-white me-2 fs-4"></i>
+            <h4>
+              {clienteNome}{" "}
+              <span onClick={logout} style={{ cursor: "pointer" }}>
+                (sair)
+              </span>
+            </h4>
+          </div>
+        )}
       </div>
     </nav>
   );
