@@ -1,6 +1,7 @@
 "use client";
 import ItemTatuagem from "@/components/ItemTatuagem";
 import { useEffect, useState } from "react";
+import Pesquisa from "./Pesquisar";
 
 export default function Destaque() {
   const [tatuagens, setTatuagens] = useState([]);
@@ -20,9 +21,11 @@ export default function Destaque() {
   return (
       <div className="container mt-5">
 		<h1 className="text-center ">Galeria de Tatuagens</h1>
+		<Pesquisa/>
         <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4 mt-3">
           {listaTatuagens}
         </div>
+
       </div>
   );
 }
