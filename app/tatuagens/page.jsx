@@ -1,6 +1,5 @@
 "use client";
 import ItemTatuagem from "@/components/ItemTatuagem";
-import Protecao from "@/components/Protecao";
 import { useEffect, useState } from "react";
 
 export default function Tatuagem() {
@@ -19,12 +18,10 @@ export default function Tatuagem() {
     <ItemTatuagem key={tatuagem.id} tatuagem={tatuagem} />
   ));
   return (
-	<Protecao>
 		<div className="container">
 			<div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4 mt-3">
 				{listaTatuagens}
 			</div>
 		</div>
-	</Protecao>
   );
 }
